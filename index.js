@@ -1,3 +1,13 @@
+const http = require("http");
+
+const port = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("OK");
+}).listen(port, () => console.log("HTTP listening on", port));
+
+
+
 const { Client } = require('discord.js');
 
 const token = process.env.DISCORD_TOKEN;
