@@ -1,3 +1,7 @@
+console.log("BOOT OK", new Date().toISOString());
+console.log("NODE", process.version);
+console.log("DISCORD.JS", require("discord.js").version);
+
 const http = require("http");
 const { Client, GatewayIntentBits } = require("discord.js");
 
