@@ -1,3 +1,24 @@
+require("dotenv").config();
+
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const token = process.env.DISCORD_TOKEN;
+if (!token) {
+  console.error("DISCORD_TOKEN fehlt. Bitte in .env eintragen.");
+  process.exit(1);
+}
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+client.once("ready", () => {
+  console.log("BOT IST ONLINE ALS:", client.user.tag);
+  client.user.setActivity({ name: "Am aufpassen", type: 0 }); // 0=PLAYING
+});
+
+client.login(token).catch((e) => {
+  console.error("LOGIN FEHLER:", e);
+  process.exit(1);
+});
 console.log("BOOT OK", new Date().toISOString());
 console.log("NODE", process.version);
 
